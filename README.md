@@ -25,30 +25,30 @@ SH_ACTIVITY = Lecture
 ```
 On your [Slack app's page](https://api.slack.com/apps):
 1. Go to Basic Information, copy and paste relavant tokens into ```#-----Slack-----``` section of your *.env* file. 
-Go to OAuth & Permissions, copy OAuth Access Token to the field ```TOKEN``` in **.env** and copy Bot User OAuth Access Token to the field ```BOT_TOKEN```.
+2. Go to OAuth & Permissions, copy OAuth Access Token to the field ```TOKEN``` in **.env** and copy Bot User OAuth Access Token to the field ```BOT_TOKEN```.
 
-* Note: these tokens will change after each reinstall*
+*Note: these tokens will change after each reinstall*
 ### Prepare libraries and network
 ```
 npm install
 ngrok http 3000
 ```
-ngrock creates global access to your local server (we'll run later) by forwarding your server to an address that looks like "https://e4061850.ngrok.io". (You can find this right after running ```ngrok``` on port 3000.)
+The command ```ngrock``` creates a global access to your local server (which we'll run later) by forwarding your server to a address that looks like "https://e4061850.ngrok.io". (You can find this address immediately after running ```ngrok http 3000```)
 
-*This tutorial will use "https://e4061850.ngrok.io" as an example of your server's address in the following setup. (Make sure to use your ngrok address) *
+*For simplicity, this tutorial will use ```https://e4061850.ngrok.io``` as an example of your server's address in the following. (Make sure to replace ```https://e4061850.ngrok.io``` your ngrok address) *
 ### Change your app's config on Slack 
 In [your slack app](https://api.slack.com/apps) page: 
 1. Go to **Slack Commands** and create two commands:
     /generate
-        Request URL = https://e4061850.ngrok.io/gen
+        Request URL = ```https://e4061850.ngrok.io/gen```
     /inclass
-        Request URL = https://e4061850.ngrok.io/check
+        Request URL = ```https://e4061850.ngrok.io/check```
 
 2. Go to **OAuth & Permissions** and add a Redirect URL
-        Redirect URL = https://e4061850.ngrok.io/oauth
+        Redirect URL = ```https://e4061850.ngrok.io/oauth```
 
 3. Go to **.env** in the project directory and change 
-        SERVER_ADDRESS = https://e4061850.ngrok.io/
+        SERVER_ADDRESS = ```https://e4061850.ngrok.io/```
 
 ### Get Status Hero tokens
 Go to your [status hero](https://statushero.com) setting; click on Team Setting; then click on API tab. Find Team ID and Team API key and copy them in **.env** file.
