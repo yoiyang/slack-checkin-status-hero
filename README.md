@@ -5,23 +5,29 @@ A slack bot that lets students check in by displaying a QR code in class on Slac
 ### Create your Slack app
 Creating your own Slack app on [slack](https://api.slack.com/apps) and add it to your workspace. 
 ### Create an .env file
-In the project directory, create an .env file with your configs and security token found at app's settings:
+In the project directory, copy and paste the following code to **.env**.
 ```
-# Server
+# -----Server-----
 SERVER_ADDERSS = server.com
 PORT = 3000
-# Slack
-SLACK_ADMIN = testuser2@ucsd.edu testuser2@ucsd.edu
+# -----Slack-----
+SLACK_ADMIN = testuser2@ucsd.edu testuser2@ucsd.edu 
 SLACK_SIGNING_SECRET = abcdefg
 CLIENT_ID = 1234567890.1234567890
 CLIENT_SECRET = 1234567890abcdefghijklm
 TOKEN = xoxp-1234567890-1234567890-1234567890-1234567890abcdefghijklm
 BOT_TOKEN = xoxp-1234567890-1234567890-1234567890abcdefghijklm
-# Status hero
+# -----Status hero-----
 SH_API_KEY = 1234567890abcdefghijklm
 SH_TEAM_ID = 12345-1234-1234-1234-1234567890a
 SH_ACTIVITY = Lecture
+# -----------
 ```
+On your [Slack app's page](https://api.slack.com/apps):
+1. Go to Basic Information, copy and paste relavant tokens into ```#-----Slack-----``` section of your *.env* file. 
+Go to OAuth & Permissions, copy OAuth Access Token to the field ```TOKEN``` in **.env** and copy Bot User OAuth Access Token to the field ```BOT_TOKEN```.
+
+* Note: these tokens will change after each reinstall*
 ### Prepare libraries and network
 ```
 npm install
