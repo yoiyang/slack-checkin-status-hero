@@ -2,8 +2,10 @@
 A slack bot that lets students check in by displaying a QR code in class on Slack. (Node.js)
 
 ## Getting Started
-### Create your Slack app and create an .env file
-After creating your Slack app on [slack](https://api.slack.com/apps), In the same directory, create an .env file with your configs and security token found at app's settings:
+### Create your Slack app
+Creating your own Slack app on [slack](https://api.slack.com/apps) and add it to your workspace. 
+### Create an .env file
+In the project directory, create an .env file with your configs and security token found at app's settings:
 ```
 # Server
 SERVER_ADDERSS = server.com
@@ -20,16 +22,15 @@ SH_API_KEY = 1234567890abcdefghijklm
 SH_TEAM_ID = 12345-1234-1234-1234-1234567890a
 SH_ACTIVITY = Lecture
 ```
-### Prepare libraries and run
+### Prepare libraries and network
 ```
 npm install
 ngrok http 3000
 ```
-### Change your bot's config on Slack 
 ngrock creates global access to your local server (we'll run later) by forwarding your server to an address that looks like "https://e4061850.ngrok.io". (You can find this right after running ```ngrok``` on port 3000.)
 
-*I will use "https://e4061850.ngrok.io" as example for the following setup:*
-
+*This tutorial will use "https://e4061850.ngrok.io" as an example of your server's address in the following setup. (Make sure to use your ngrok address) *
+### Change your app's config on Slack 
 In [your slack app](https://api.slack.com/apps) page: 
 1. Go to **Slack Commands** and create two commands:
     /generate
@@ -43,13 +44,14 @@ In [your slack app](https://api.slack.com/apps) page:
 3. Go to **.env** in the project directory and change 
         SERVER_ADDRESS = https://e4061850.ngrok.io/
 
-### Go to your Status Hero team setting, click on API tab
-Find Team ID and Team API key and copy them in **.env** file.
+### Get Status Hero tokens
+Go to your [status hero](https://statushero.com) setting; click on Team Setting; then click on API tab. Find Team ID and Team API key and copy them in **.env** file.
 
-### Run local server. Done.
+### Run local server. 
 ```
 npm start
 ```
+### Done. Use those commands on Slack.
 
 ## Work Flow
 
