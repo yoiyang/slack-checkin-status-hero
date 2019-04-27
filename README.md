@@ -36,7 +36,7 @@ ngrok http 3000
 The command ```ngrock``` creates a global access to your local server (which we'll run later) by forwarding your server to a address that looks like "https://e4061850.ngrok.io". (You can find this address immediately after running ```ngrok http 3000```)
 
 *For simplicity, this tutorial will use ```https://e4061850.ngrok.io``` as an example of your server's address in the following. (Make sure to replace ```https://e4061850.ngrok.io``` your ngrok address) *
-### Change your app's config on Slack 
+### Change your app's config on Slack (needs to be updated everytime running ngrok)
 In [your slack app](https://api.slack.com/apps) page: 
 1. Go to **Slack Commands** and create two commands:
     /generate

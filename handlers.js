@@ -39,11 +39,11 @@ exports.check_in_handler = async (req, res) => {
     console.log(`${user.profile.email} checks in`)
     // check in user on Status Hero
     status_hero.checkin(user.profile.email)    
-      .then((response) => {
-        res.send(`Checked in! ${response.data.url}`)
-      })
-      .catch((err) => {
-        res.send(err.data)
+        .then((response) => {
+            res.send(`Checked in! ${response.data.url}`)
+        })
+        .catch((err) => {
+            res.send(err.response.data.errors)
       });
 }
   

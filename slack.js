@@ -35,14 +35,30 @@ exports.response = (attend_token, timeout) => {
         "response_type": "in_channel",
         "text": `Your token is: ${attend_token}`,
         "attachments": [{ 
-          "fields": [
-            { "title": `Use: "/inclass ${attend_token}" to check in.`,
-              "short": false
+            "fields": [
+            { 
+                "title": `Use: "/inclass ${attend_token}" to check in.`,
+                "short": false,
             }
-          ],
-          "text": `Valid until ${new Date(timeout).toLocaleString()}`,
-          "image_url": `${server_address}/QR?t=${attend_token}`
-      }]}
+            ],
+            "text": `Valid until ${new Date(timeout).toLocaleString()}`,
+            "image_url": `${server_address}/QR?t=${attend_token}`,
+            "actions": [
+                {
+                    "name": `Test`,
+                    "text": `/inclass ${attend_token}`,
+                    "type": "button",
+                    "value": `/inclass ${attend_token}`,
+                    "confirm": {
+                        "title": "Test: Are you sure?",
+                        "text": "Test Wouldn't you prefer a good game of chess?",
+                        "ok_text": "Yes",
+                        "dismiss_text": "No"
+                    }
+                }
+                ],
+      }]};
+    console.log(bot_message)
     return bot_message
 }
 
@@ -52,9 +68,9 @@ const get_user = (user_id) => {
         axios.get("https://slack.com/api/users.info", {params:{token: app_token, user: user_id}})
         .then((res) => {
             if (res.data.ok)
-            resolve(res.data.user);
+                resolve(res.data.user);
             else
-            reject(res.data.error)
+                reject(res.data.error)
         })
         .catch((err) => {
             reject(err);
@@ -64,6 +80,8 @@ const get_user = (user_id) => {
 
 //confirm request is from Slack 
 const verify_request = (req) => {
+
+    console.log(req.body)
     const hmac = crypto.createHmac('sha256', signing_secret);
     const req_body = object_to_param(req.body);
     const timestamp = req.headers['x-slack-request-timestamp'];
